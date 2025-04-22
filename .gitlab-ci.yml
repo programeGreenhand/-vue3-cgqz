@@ -1,0 +1,40 @@
+stages:
+  - install
+  - build
+  - deploy
+install:
+  image: node:18.6.0-alpine
+  stage: install
+  cache:
+    paths:
+      - node_modules/
+  script:
+    - npm install --registry=https://registry.npmmirror.com/
+    - npm run format
+    - npm run lint
+    - npm run build
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - dist
+build-image:
+  image: docker:dind
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build -t "172.22.121.50/ai-evaluation/evaluation-frontend:$CI_PIPELINE_IID" .
+    - docker push "172.22.121.50/ai-evaluation/evaluation-frontend:$CI_PIPELINE_IID"
+deploy:
+  stage: deploy
+  tags:
+    - "60"
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "=======start deploy======="
+    - docker rm -f evaluation-frontend
+    - docker run -di -p 80:80 --name evaluation-frontend 172.22.121.50/ai-evaluation/evaluation-frontend:$CI_PIPELINE_IID
+    - echo "=======deploy success======="
