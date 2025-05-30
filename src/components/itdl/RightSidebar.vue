@@ -19,10 +19,11 @@
         <div class="processed-image">
           <img
             v-if="appStore.detectionResult.resultImage"
-            :src="appStore.detectionResult.resultImage"
+            :src="`data:image/jpeg;base64,${appStore.detectionResult.resultImage}`"
             alt="检测结果图片"
             class="result-image"
           />
+          <!-- {{ appStore.detectionResult.resultImage }} -->
         </div>
       </div>
     </div>

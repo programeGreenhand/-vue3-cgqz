@@ -140,7 +140,7 @@ const uploadFile = () => {
   if (fileInput.value) fileInput.value.click();
 };
 
-const formData = new FormData();
+
 
 //  直接发起请求版
 const requestformodel=async (formData:FormData) =>{
@@ -204,6 +204,7 @@ const handleUpload = async (e: Event) => {
 
   try {
    
+    const formData = new FormData();
     formData.append("userName",userName)
     formData.append("file", file);
    
@@ -215,11 +216,12 @@ const handleUpload = async (e: Event) => {
     // });
 
     // 上传图片并接收 JSON 响应
-    const  response = await axios.post("http://localhost:8081/images/OssUpload", formData, {
+    const  response = await axios.post("/api/images/OssUpload", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     // const response = await upload(file,userName);
     const data = response.data
+    console.log(data)
 
     
 
@@ -248,7 +250,7 @@ const handleUpload = async (e: Event) => {
 
     images.value.push(newImage);
     currentImage.value = newImage.originalUrl;
-    uploadLimit.value--;
+    // uploadLimit.value--;
 
   } catch (error) {
     console.error("上传失败:", error);
