@@ -7,3 +7,4 @@
 3.篡改检测历史
 4.简单的人物权限管理
 详细内容见master分支！！！！！
+【Demo连接】https://68078d593485fdccf38e3bde--sage-otter-637643.netlify.app/
