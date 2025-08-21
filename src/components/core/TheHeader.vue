@@ -21,6 +21,7 @@ import { ElNotification } from 'element-plus'
 const logosize = ref(12)
 const linkSize = ref(2)
 const offset = ref(0)
+const isLoggedIn = false;
 
 // 统一的布局更新函数
 const updateLayout = () => {
@@ -103,7 +104,8 @@ onUnmounted(() => {
               
                 <el-dropdown-item >
                 
-                    <n-button  @click="handleButtonClick" style="border: solid 1px green;">退出登录</n-button>
+                    <!-- <n-button  @click="handleButtonClick" style="border: solid 1px green;">退出登录</n-button> -->
+                     <n-button  style="border: solid 1px green;">退出登录</n-button>
                   
                 </el-dropdown-item>
             </el-dropdown-menu>
