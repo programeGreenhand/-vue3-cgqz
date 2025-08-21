@@ -1,0 +1,47 @@
+<template>
+    <div class="container" style="display: flex; flex-direction: column;">
+      <!-- 顶部介绍 -->
+      <Topbar class="Topbar"></Topbar>
+      <!-- 功能区 -->
+      <div class="app-container" >
+          <LeftSidebar/>
+          <RightSidebar/>
+      </div>
+    </div>
+  </template>
+  
+  <script lang="ts" setup>
+  import { defineAsyncComponent } from 'vue';
+  import { ref, computed } from 'vue'
+  import Topbar from '@/components/itdl/Topbar.vue'
+  import LeftSidebar from '@/components/itdl/LeftSidebar.vue'
+
+  
+  </script>
+  
+  <style scoped>
+  .app-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100vh - 200px);
+  }
+
+  .container{
+    flex: 3;
+  }
+
+  .right-sidebar{
+    flex: 2;
+  }
+
+  @media screen and (max-width: 768px) {
+    .Topbar{
+      display: none;
+    }
+    .app-container{
+      flex-direction: column;
+    }
+  }
+
+  </style>

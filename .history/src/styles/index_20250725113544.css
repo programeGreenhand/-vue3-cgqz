@@ -1,0 +1,109 @@
+:root {
+    /* 基础字体大小，便于 rem 计算 */
+    font-size: 16px;
+
+    /* 颜色变量 */
+    --color-primary: #2563eb;
+    --color-secondary: #64748b;
+    --color-success: #22c55e;
+    --color-warning: #f59e42;
+    --color-danger: #ef4444;
+    --color-bg: #f8fafc;
+    --color-text: #1e293b;
+
+    /* 间距变量 */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+
+    /* 圆角变量 */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+}
+
+/* 全局重置 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 基础字体和背景 */
+body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    font-size: 1rem;
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* 响应式字体大小 */
+@media (max-width: 600px) {
+    :root {
+        font-size: 14px;
+    }
+}
+
+/* 公共样式 */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover {
+    color: var(--color-secondary);
+}
+
+button {
+    font: inherit;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-primary);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+button:hover {
+    background: var(--color-secondary);
+}
+
+input, textarea, select {
+    font: inherit;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius-sm);
+    padding: var(--space-xs);
+    background: #fff;
+    color: var(--color-text);
+    outline: none;
+    transition: border-color 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+    border-color: var(--color-primary);
+}
+
+/* 图片自适应 */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 响应式容器 */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+}
+
+/* 隐藏滚动条（可选） */
+/* ::-webkit-scrollbar {
+    display: none;
+} */
